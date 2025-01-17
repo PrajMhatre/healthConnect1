@@ -1,0 +1,97 @@
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #2196f3;
+    border-radius: 10px;
+    background-color: #e3f2fd;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1565c0;
+  }
+  
+  .login-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-container input {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #2196f3;
+    border-radius: 5px;
+  }
+  
+  .login-container button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-container button:hover {
+    background-color: #1976d2;
+  }
+  /* Responsive Styles */
+@media (max-width: 768px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .login-container h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"],
+    .login-container button {
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+
+    .login-container button {
+        font-size: 16px;
+    }
+
+    .login-container .register-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 10px;
+        margin: 15px auto;
+    }
+
+    .login-container h2 {
+        font-size: 18px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"],
+    .login-container button {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .login-container button {
+        font-size: 14px;
+    }
+
+    .login-container .register-link {
+        font-size: 12px;
+    }
+}

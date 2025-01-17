@@ -1,0 +1,253 @@
+/* Main container for the Why Choose Us section */
+.why-choose-us-table-section {
+    width: 75%;
+    height: auto;
+    background-color: #ffffff;
+    padding-left: 20px;
+    border-radius: 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top: -100px;
+    display: flex;
+    position: relative;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Header Section */
+  .why-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .header-left {
+    padding-left: 40px;
+    text-align: left;
+  }
+  
+  .header-left h5 {
+    padding-bottom: 0px;
+    color: #fcb900;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .header-left h2 {
+    padding-top: 0px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .header-right {
+    text-align: right;
+  }
+  
+  .why-header h5 {
+    color: #fcb900;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .why-header h2 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Table Section */
+  .why-table-container {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .why-table {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .why-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Box Content */
+  .why-box {
+    flex: 1;
+    max-width: 30%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: none;
+  }
+  
+  .box-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    font-size: 50px;
+    color: #333;
+    margin-right: 20px;
+  }
+  
+  .icon.yellow {
+    color: #fcb900;
+  }
+  
+  .text-content {
+    text-align: left;
+  }
+  
+  .text-content h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .text-content p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Thin line between header and table */
+  .thin-line {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 5px 0;
+  }
+  
+  /* Book button */
+  .book-btn {
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #ffc107;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .book-btn:hover {
+    background-color: #d1d101;
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 1024px) {
+    .why-choose-us-table-section {
+      width: 85%;
+    }
+  
+    .why-header h2 {
+      font-size: 36px;
+    }
+  
+    .why-header h5 {
+      font-size: 20px;
+    }
+  
+    .why-box {
+      max-width: 45%;
+    }
+  
+    .icon {
+      font-size: 40px;
+    }
+  
+    .text-content h3 {
+      font-size: 24px;
+    }
+  
+    .text-content p {
+      font-size: 16px;
+    }
+  
+    .book-btn {
+      font-size: 16px;
+      padding: 10px 20px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .why-choose-us-table-section {
+      width: 90%;
+      margin-top: -50px;
+    }
+  
+    .why-header {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .why-header h2 {
+      font-size: 30px;
+    }
+  
+    .why-box {
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .icon {
+      font-size: 40px;
+    }
+  
+    .text-content h3 {
+      font-size: 22px;
+    }
+  
+    .text-content p {
+      font-size: 14px;
+    }
+  
+    .book-btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .why-choose-us-table-section {
+      width: 95%;
+      margin-top: -20px;
+    }
+  
+    .why-header h2 {
+      font-size: 24px;
+    }
+  
+    .why-header h5 {
+      font-size: 18px;
+    }
+  
+    .why-box {
+      max-width: 100%;
+      padding: 10px;
+    }
+  
+    .icon {
+      font-size: 35px;
+    }
+  
+    .text-content h3 {
+      font-size: 20px;
+    }
+  
+    .text-content p {
+      font-size: 12px;
+    }
+  
+    .book-btn {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  

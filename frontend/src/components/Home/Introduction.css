@@ -1,0 +1,194 @@
+/* Introduction Page Styling */
+.introduction-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+  }
+  
+  .introduction-content {
+    display: flex;
+    max-width: 1200px; /* Max width of the content */
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .introduction-image {
+    width: 50%; /* Ensure the image takes up 50% of the container */
+    padding-right: 40px; /* Add some space between image and text */
+  }
+  
+  .introduction-image img {
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    border-radius: 10px; /* Rounded corners for the image */
+  }
+  
+  .introduction-text {
+    width: 50%;
+    text-align: left;
+  }
+  
+  .introduction-text h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .introduction-text h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fcb900;
+    margin: 20px 0;
+  }
+  
+  .introduction-text p {
+    font-size: 16px;
+    color: #7f8c8d;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .introduction-text h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 20px;
+  }
+  
+  .introduction-text ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 0;
+  }
+  
+  .introduction-text ul li {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin: 5px 0;
+    padding-left: 35px; /* Adjust padding for proper alignment */
+    position: relative; /* Positioning for the tick icon */
+  }
+  
+  .quality-list-container {
+    border: 2px solid #f9f9f9; /* Light border around the list */
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px; /* Rounded corners for the box */
+    background-color: #f9f9f9; /* Light background for better visibility */
+  }
+  
+  .tick-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%); /* Center the tick vertically */
+    font-size: 20px;
+    color: #fcb900; /* Yellow color for the tick */
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .profile-image {
+    width: 20%;
+    max-width: 80px;
+    height: auto;
+    border-radius: 50%; /* Circular profile image */
+    margin-right: 20px;
+  }
+  
+  .profile-text h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+  }
+  
+  .profile-text p {
+    font-size: 16px;
+    color: #7f8c8d;
+  }
+  
+  .more-btn {
+    background-color: #fcb900;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+    align-self: flex-start;
+    border-radius: 5px; /* Rounded corners for the button */
+    color: #fff; /* White text */
+  }
+  
+  .more-btn:hover {
+    background-color: #e4a700; /* Darker shade on hover */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .introduction-content {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .introduction-image {
+      width: 100%; /* Full width for the image on smaller screens */
+      padding-right: 0; /* Remove padding */
+      margin-bottom: 20px; /* Add margin below the image */
+    }
+  
+    .introduction-text {
+      width: 100%;
+      padding-left: 0;
+      text-align: center;
+    }
+  
+    .introduction-image img {
+      max-width: 100%;
+    }
+  
+    .profile-section {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+  
+    .profile-image {
+      width: 30%; /* Adjust the profile image size for smaller screens */
+      max-width: 120px;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .introduction-text h2 {
+      font-size: 24px; /* Adjust title size for small screens */
+    }
+  
+    .introduction-text h3 {
+      font-size: 16px; /* Adjust subtitle size for small screens */
+    }
+  
+    .introduction-text p {
+      font-size: 14px; /* Adjust paragraph size for small screens */
+    }
+  
+    .quality-list-container {
+      width: 100%;
+    }
+  
+    .more-btn {
+      width: 100%; /* Make the button span full width on smaller screens */
+      text-align: center;
+    }
+  }
+  

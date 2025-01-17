@@ -1,0 +1,113 @@
+/* Main Header Bar */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 2px; /* Reduced padding for a more compact header */
+  background-color: #c5c3da;
+  flex-wrap: wrap; /* Allows items to wrap in smaller screens */
+}
+
+/* Logo */
+.logo {
+  width: 40px; /* Smaller logo size for a more compact header */
+  height: auto; /* Maintain the aspect ratio of the logo */
+}
+
+/* Contact and Location */
+.contact-email,
+.location {
+  font-size: 12px; /* Smaller text size */
+  margin-right: 15px; /* Reduced margin */
+}
+
+/* Social Media Icons */
+.social-icons a {
+  margin: 0 8px; /* Reduced margin between social icons */
+  font-size: 18px; /* Slightly smaller social icons */
+  color: #333;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+/* Appointment Button */
+.appointment-btn {
+  padding: 8px 15px; /* Reduced padding for a smaller button */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.appointment-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Sidebar Icon */
+.sidebar-icon {
+  font-size: 22px; /* Slightly smaller sidebar icon */
+  color: #333;
+  cursor: pointer;
+}
+
+.sidebar-icon:hover {
+  color: #007bff;
+}
+
+/* Responsive Styles */
+
+/* For Tablets and Smaller Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .header-bar {
+    padding: 8px;
+    justify-content: space-between; /* Align logo and button */
+  }
+
+  .logo {
+    width: 30px; /* Smaller logo for tablets */
+    display: block; /* Ensure logo is visible */
+  }
+
+  .appointment-btn {
+    display: block; /* Ensure appointment button is visible */
+  }
+
+  /* Hide all other elements */
+  .contact-email,
+  .location,
+  .social-icons,
+  .sidebar-icon {
+    display: none; /* Ensure these are hidden */
+  }
+}
+
+/* For Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .header-bar {
+    padding: 8px; /* Adjust padding for mobile */
+    display: flex;
+    justify-content: space-between; /* Align logo and appointment button */
+    align-items: center; /* Center align logo and appointment button */
+  }
+
+  .logo {
+    width: 30px; /* Smaller logo for very small screens */
+    display: block; /* Ensure logo is visible */
+  }
+
+  .appointment-btn {
+    display: block; /* Ensure appointment button is visible */
+  }
+
+  /* Hide all other elements */
+  .contact-email,
+  .location,
+  .social-icons,
+  .sidebar-icon {
+    display: none; /* Hide these elements on mobile */
+  }
+}

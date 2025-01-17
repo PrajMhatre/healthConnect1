@@ -1,0 +1,114 @@
+/* Base Styles for Register */
+.register-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.register-container button:hover {
+    background-color: #218838;
+}
+
+.register-container .login-link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container .login-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .register-container {
+        width: 90%;
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .register-container h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .register-container input[type="text"],
+    .register-container input[type="email"],
+    .register-container input[type="password"],
+    .register-container button {
+        font-size: 14px;
+        padding: 8px;
+        margin-bottom: 12px;
+    }
+
+    .register-container button {
+        font-size: 16px;
+    }
+
+    .register-container .login-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        width: 90%;
+        padding: 10px;
+        margin: 15px auto;
+    }
+
+    .register-container h2 {
+        font-size: 18px;
+    }
+
+    .register-container input[type="text"],
+    .register-container input[type="email"],
+    .register-container input[type="password"],
+    .register-container button {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .register-container button {
+        font-size: 14px;
+    }
+
+    .register-container .login-link {
+        font-size: 12px;
+    }
+}
