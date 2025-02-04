@@ -1,10 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 const diseasePredictionRoutes = require('./routes/diseasePredictionRoutes');
+const userRoutes = require('./routes/userRoutes'); // Import the user routes
+const doctorRoutes = require('./routes/doctorRoutes'); // Import doctor routes
+const patientRoutes = require('./routes/patientRoutes');  // Import patient routes
 const pool = require('./utils/db'); // Import the database connection pool
 
+dotenv.config(); // Load environment variables from .env
 const app = express();
-app.use(bodyParser.json());
+
+// Use express.json() to parse incoming requests with JSON payloads
+app.use(express.json());
 
 // Test Database Connection
 app.get('/test-db', async (req, res) => {
@@ -19,6 +26,16 @@ app.get('/test-db', async (req, res) => {
 
 // Use the disease prediction route
 app.use('/api', diseasePredictionRoutes);
+// Use the user routes
+app.use('/api', userRoutes); // Add user-specific routes
+// Use the doctor routes
+app.use('/api', doctorRoutes);
+// Use the patient routes
+app.use('/api', patientRoutes);  // Use patient routes
+// Fallback for unmatched routes (404 error)
+app.use((req, res) => {
+  res.status(404).send('Route not found');
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
