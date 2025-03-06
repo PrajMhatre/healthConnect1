@@ -1,14 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors = require('cors'); // Import CORS
 const diseasePredictionRoutes = require('./routes/diseasePredictionRoutes');
 const userRoutes = require('./routes/userRoutes'); // Import the user routes
 const doctorRoutes = require('./routes/doctorRoutes'); // Import doctor routes
 const patientRoutes = require('./routes/patientRoutes');  // Import patient routes
+const authRoutes = require('./routes/authRoutes');  // Import patient routes
 const pool = require('./utils/db'); // Import the database connection pool
 
 dotenv.config(); // Load environment variables from .env
+const jwtSecret = process.env.JWT_SECRET;
 const app = express();
+
+// Enable CORS
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
+
 
 // Use express.json() to parse incoming requests with JSON payloads
 app.use(express.json());
@@ -29,9 +40,12 @@ app.use('/api', diseasePredictionRoutes);
 // Use the user routes
 app.use('/api', userRoutes); // Add user-specific routes
 // Use the doctor routes
-app.use('/api', doctorRoutes);
+app.use('/api', doctorRoutes);  //http://localhost:4000/api/doctors
+
 // Use the patient routes
 app.use('/api', patientRoutes);  // Use patient routes
+// Use the patient routes
+app.use('/api', authRoutes);  // Use patient routes
 // Fallback for unmatched routes (404 error)
 app.use((req, res) => {
   res.status(404).send('Route not found');

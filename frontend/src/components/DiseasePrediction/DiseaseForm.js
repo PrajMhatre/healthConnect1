@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Removed Link import
+import Footer from "../Common/Footer";
+import Navbar from "../Common/Navbar";
+import HeaderBar from "../Common/HeaderBar";
 import "./DiseaseForm.css";
 
 const symptoms = [
@@ -12,12 +15,16 @@ const symptoms = [
   { id: "stomach_pain", label: "Stomach Pain", placeholder: "Do you have stomach pain?" },
   { id: "acidity", label: "Acidity", placeholder: "Are you experiencing acidity?" },
   { id: "vomiting", label: "Vomiting", placeholder: "Have you experienced vomiting?" },
+  { id: "burning_micturition", label: "Burning Micturition", placeholder: "Have you experienced burning_micturition?" },//burning_micturition
+  { id: "spotting_ urination", label: "spotting_ urination", placeholder: "Have you experienced spotting_ urination?" },//spotting_ urination
   { id: "fatigue", label: "Fatigue", placeholder: "Do you feel fatigue?" },
+  { id: "anxiety", label: "anxiety", placeholder: "Do you feel anxiety?" },//anxiety
   { id: "weight_loss", label: "Weight Loss", placeholder: "Have you experienced weight loss?" },
   { id: "restlessness", label: "Restlessness", placeholder: "Do you feel restlessness?" },
   { id: "lethargy", label: "Lethargy", placeholder: "Do you feel lethargic?" },
+  { id: "patches_in_throat", label: "patches_in_throat", placeholder: "Do you feel patches_in_throat?" },//patches_in_throat
   { id: "cough", label: "Cough", placeholder: "Do you have a cough?" },
-  { id: "high_fever", label: "High Fever", placeholder: "Do you have a high fever?" },
+  // { id: "high_fever", label: "High Fever", placeholder: "Do you have a high fever?" },
   { id: "sunken_eyes", label: "Sunken Eyes", placeholder: "Are your eyes sunken?" },
   { id: "breathlessness", label: "Breathlessness", placeholder: "Do you feel breathless?" },
   { id: "sweating", label: "Sweating", placeholder: "Are you sweating excessively?" },
@@ -25,16 +32,16 @@ const symptoms = [
   { id: "indigestion", label: "Indigestion", placeholder: "Do you have indigestion?" },
   { id: "headache", label: "Headache", placeholder: "Do you have a headache?" },
   { id: "yellowish_skin", label: "Yellowish Skin", placeholder: "Is your skin yellowish?" },
+  { id: "constipation", label: "constipation ", placeholder: "Is your skin constipation?" },//constipation
   { id: "abdominal_pain", label: "Abdominal Pain", placeholder: "Are you experiencing abdominal pain?" },
   { id: "phlegm", label: "Phlegm", placeholder: "Do you have phlegm?" },
   { id: "redness_of_eyes", label: "Redness of Eyes", placeholder: "Do you have redness in your eyes?" },
 ];
 
-const DiseasePredictionForm = () => {
+const DiseaseForm = () => {
   const [formData, setFormData] = useState(
     symptoms.reduce((acc, symptom) => ({ ...acc, [symptom.id]: "" }), {})
   );
-
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -50,22 +57,26 @@ const DiseasePredictionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submit button clicked");
-    console.log("Form data submitted:", formData);
-
-    // Create an array of 0s and 1s based on the form data
-    const symptomsArray = symptoms.map((symptom) => formData[symptom.id] === "1" ? 1 : 0);
-
+    const symptomsArray = symptoms.map((symptom) => (formData[symptom.id] === "1" ? 1 : 0));
     try {
       const response = await fetch("http://127.0.0.1:5000/single/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ symptoms: symptomsArray }), // Send the symptoms array
+        body: JSON.stringify({ symptoms: symptomsArray }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        navigate("/disease-prediction/result", { state: { diseaseName: data.disease } });
+        const predictedDisease = data.disease;
+  
+        if (predictedDisease) {
+          navigate("/disease-prediction/result", { state: { diseaseName: predictedDisease } });
+  
+          // Save patient history asynchronously (without waiting)
+          savePatientHistory(predictedDisease).catch((error) =>
+            console.error("Error saving patient history:", error)
+          );
+        }
       } else {
         console.error("Error: Unable to fetch prediction");
       }
@@ -74,7 +85,41 @@ const DiseasePredictionForm = () => {
     }
   };
 
+  const savePatientHistory = async (predictedDisease) => {
+    const userId = localStorage.getItem("userId") || "Unknown";
+    const username = localStorage.getItem("username") || "Guest";
+    const formattedSymptoms = symptoms
+      .filter((symptom) => formData[symptom.id] === "1")
+      .map((symptom) => symptom.label)
+      .join(", ");
+
+    const patientData = {
+      userId,
+      username,
+      symptoms: formattedSymptoms,
+      disease: predictedDisease,
+      date: new Date().toISOString().split("T")[0],
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:4000/api/save-patient-history", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(patientData),
+      });
+
+      if (!response.ok) {
+        console.error("Failed to save patient history.");
+      }
+    } catch (error) {
+      console.error("Error saving patient history:", error);
+    }
+  };
+
   return (
+    <div>
+      <HeaderBar/>
+      <Navbar/>
     <div className="form-container">
       <h1 className="form-heading">Disease Prediction Form</h1>
       <form onSubmit={handleSubmit}>
@@ -102,10 +147,12 @@ const DiseasePredictionForm = () => {
         </button>
       </form>
     </div>
+    <Footer/>
+    </div>
   );
 };
 
-export default DiseasePredictionForm;
+export default DiseaseForm;
 
 
 
@@ -113,7 +160,7 @@ export default DiseasePredictionForm;
 // import { Link } from 'react-router-dom';  // Import Link for routing
 // import "./DiseaseForm.css";
 
-// const DiseasePredictionForm = () => {
+// const DiseaseForm = () => {
 //   const [error, setError] = useState("");
 
 //   const handleInputChange = (e) => {
@@ -457,4 +504,4 @@ export default DiseasePredictionForm;
 //   );
 // };
 
-// export default DiseasePredictionForm;
+// export default DiseaseForm;

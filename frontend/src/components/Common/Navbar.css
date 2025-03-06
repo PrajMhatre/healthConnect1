@@ -1,108 +1,162 @@
 /* Navbar Container */
 .navbar {
-    background-color: #333;
-    padding: 10px 0;
-  }
-  
+  background-color: #333;
+  padding: 12px 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.navbar-logo {
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-logo:hover {
+  color: #007bff;
+}
+
+/* Navbar Menu */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-item {
+  margin: 0 15px;
+}
+
+.navbar-links {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-links:hover {
+  color: #007bff;
+}
+
+/* Profile Name & Logout */
+.navbar-item.dropdown {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-name {
+  color: #fff;
+  font-weight: bold;
+}
+
+.logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.logout-button:hover {
+  background-color: darkred;
+}
+
+/* Responsive Styles */
+
+/* For Tablets and Smaller Devices (max-width: 768px) */
+@media (max-width: 768px) {
   .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
   }
-  
-  .navbar-logo {
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
+
   .navbar-menu {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .navbar-item {
-    margin: 0 15px;
-  }
-  
-  .navbar-links {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .navbar-links:hover {
-    color: #007bff;
-  }
-  
-  /* Responsive Styles */
-  
-  /* For Tablets and Smaller Devices (max-width: 768px) */
-  @media (max-width: 768px) {
-    .navbar-menu {
-      display: none; /* Hide the menu by default */
+      display: none; /* Hide menu by default */
       position: absolute;
-      top: 50px;
+      top: 60px;
       right: 0;
-      background-color: #333;
+      background-color: rgba(51, 51, 51, 0.95);
       width: 100%;
       flex-direction: column;
       align-items: center;
-    }
-  
-    .navbar-item {
+      padding: 20px 0;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s ease-in-out;
+  }
+
+  .navbar-item {
       margin: 10px 0;
-    }
-  
-    .navbar-container {
-      justify-content: space-between;
-    }
-  
-    /* Show the menu when the burger icon is clicked */
-    .navbar-menu.active {
+  }
+
+  /* Show menu when active */
+  .navbar-menu.active {
       display: flex;
-    }
-  
-    /* Hamburger Menu Icon */
-    .hamburger {
+  }
+
+  /* Hamburger Menu */
+  .hamburger {
       display: block;
-      font-size: 28px;
+      font-size: 30px;
       color: #fff;
       cursor: pointer;
-    }
-  
-    /* Navbar Logo on Mobile */
-    .navbar-logo {
+      transition: color 0.3s ease-in-out;
+  }
+
+  .hamburger:hover {
+      color: #007bff;
+  }
+
+  /* Adjustments for mobile profile dropdown */
+  .navbar-item.dropdown {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .logout-button {
+      width: 100%;
+      max-width: 120px;
+  }
+}
+
+/* For Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+      padding: 10px 15px;
+  }
+
+  .navbar-logo {
       font-size: 20px;
-    }
   }
-  
-  /* For Mobile Devices (max-width: 480px) */
-  @media (max-width: 480px) {
-    .navbar {
-      padding: 8px 0;
-    }
-  
-    .navbar-logo {
-      font-size: 18px;
-    }
-  
-    .navbar-links {
+
+  .navbar-links {
       font-size: 16px;
-    }
-  
-    .navbar-item {
-      margin: 8px 0;
-    }
-  
-    .hamburger {
-      display: block;
-    }
   }
-  
+
+  .navbar-item {
+      margin: 10px 0;
+  }
+
+  .hamburger {
+      font-size: 28px;
+  }
+}

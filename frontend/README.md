@@ -10,7 +10,6 @@ CREATE TABLE Login_Registration (
 );
 
 
-
 CREATE TABLE Doctor_Data (
     Dr_Id INT AUTO_INCREMENT PRIMARY KEY,
     Dr_Name VARCHAR(100) NOT NULL,
@@ -18,12 +17,21 @@ CREATE TABLE Doctor_Data (
     Location VARCHAR(100) NOT NULL,
     Speciality VARCHAR(100) NOT NULL,
     Contact_Info VARCHAR(100),
-    Availability_Status VARCHAR(50),
     Ratings DECIMAL(3, 2),
-    Consultation_Fee DECIMAL(10, 2)
+    Consultation_Fee DECIMAL(10, 2),
+    Email VARCHAR(100) NOT NULL UNIQUE,
+    Availability_Status_9_to_12 VARCHAR(50),
+    Availability_Status_2_to_5 VARCHAR(50),
+    Availability_Status_6_to_9 VARCHAR(50),
+    Google_Map VARCHAR(255),
+    Description TEXT,
+    Clinic_Name VARCHAR(100)
 );
 
+
+
 CREATE TABLE Patient_History (
+    History_Id INT AUTO_INCREMENT PRIMARY KEY, -- New Primary Key
     User_Id INT,
     Username VARCHAR(100) NOT NULL,
     Previous_Diseases TEXT,
@@ -31,7 +39,6 @@ CREATE TABLE Patient_History (
     Date_Of_Record DATE,
     Doctor_Id INT,
     Dr_Name VARCHAR(100),
-    PRIMARY KEY (User_Id, Date_Of_Record),
     FOREIGN KEY (User_Id) REFERENCES Login_Registration(User_Id),
     FOREIGN KEY (Doctor_Id) REFERENCES Doctor_Data(Dr_Id)
 );

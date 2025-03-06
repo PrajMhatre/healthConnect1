@@ -54,6 +54,35 @@
     text-decoration: underline;
 }
 
+/* Styles for Select Role Dropdown */
+.register-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none; /* Removes default styling in some browsers */
+}
+
+/* Style for dropdown arrow */
+.register-container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .register-container {

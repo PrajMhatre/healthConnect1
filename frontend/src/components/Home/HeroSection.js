@@ -1,8 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';  // Import Link for routing
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './HeroSection.css';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    const token = localStorage.getItem("token"); // Check if the user is logged in
+    if (token) {
+      navigate("/disease-prediction"); // Redirect to disease form if logged in
+    } else {
+      navigate("/login"); // Redirect to login page if not logged in
+    }
+  };
+
   return (
     <div className="hero-section">
       <div className="overlay"></div>
@@ -12,10 +23,8 @@ const HeroSection = () => {
         <p className="description">
           HealthConnect empowers you to take charge of your health by predicting potential diseases and connecting you with trusted doctors near you.
         </p>
-        {/* Link component wrapping the button */}
-        <Link to="/disease-prediction">
-          <button className="contact-btn">GET STARTED</button>
-        </Link>
+        {/* Button calls the function instead of using Link */}
+        <button className="contact-btn" onClick={handleGetStarted}>GET STARTED</button>
       </div>
     </div>
   );

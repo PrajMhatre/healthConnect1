@@ -5,28 +5,54 @@
     border: 2px solid #2196f3;
     border-radius: 10px;
     background-color: #e3f2fd;
-  }
-  
-  .login-container h2 {
+}
+
+.login-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #1565c0;
-  }
-  
-  .login-container form {
+}
+
+.login-container form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .login-container input {
+}
+
+.login-container input,
+.login-container select {
     margin-bottom: 15px;
     padding: 12px;
     font-size: 16px;
     border: 1px solid #2196f3;
     border-radius: 5px;
-  }
-  
-  .login-container button {
+    background-color: #ffffff;
+}
+
+/* Style for the role selection dropdown */
+.login-container select {
+    cursor: pointer;
+    appearance: none; /* Removes default dropdown arrow */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+}
+
+/* Add dropdown arrow */
+.login-container select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='gray'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+/* Focus effect */
+.login-container input:focus,
+.login-container select:focus {
+    outline: none;
+    border-color: #1976d2;
+}
+
+/* Button Styles */
+.login-container button {
     padding: 12px;
     font-size: 16px;
     background-color: #2196f3;
@@ -34,12 +60,13 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .login-container button:hover {
+}
+
+.login-container button:hover {
     background-color: #1976d2;
-  }
-  /* Responsive Styles */
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
     .login-container {
         width: 90%;
@@ -52,8 +79,8 @@
         margin-bottom: 15px;
     }
 
-    .login-container input[type="text"],
-    .login-container input[type="password"],
+    .login-container input,
+    .login-container select,
     .login-container button {
         font-size: 14px;
         padding: 8px;
@@ -62,10 +89,6 @@
 
     .login-container button {
         font-size: 16px;
-    }
-
-    .login-container .register-link {
-        font-size: 14px;
     }
 }
 
@@ -80,8 +103,8 @@
         font-size: 18px;
     }
 
-    .login-container input[type="text"],
-    .login-container input[type="password"],
+    .login-container input,
+    .login-container select,
     .login-container button {
         font-size: 12px;
         padding: 6px;
@@ -89,9 +112,5 @@
 
     .login-container button {
         font-size: 14px;
-    }
-
-    .login-container .register-link {
-        font-size: 12px;
     }
 }

@@ -20,7 +20,7 @@ CORS(app)  # Enable CORS for cross-origin requests
 
 logging.basicConfig(level=logging.DEBUG)
 # Set the data file paths
-SINGLE_DISEASE_DATA_FILE_PATH = 'data/Training.csv'
+SINGLE_DISEASE_DATA_FILE_PATH = 'data/Training25.csv'
 # MULTIPLE_DISEASE_DATA_FILE_PATH = 'data/Training.csv'
 
 # Ensure the dataset directory exists
