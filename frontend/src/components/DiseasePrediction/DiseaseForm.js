@@ -155,7 +155,6 @@ const DiseaseForm = () => {
 export default DiseaseForm;
 
 
-
 // import React, { useState } from "react";
 // import { Link } from 'react-router-dom';  // Import Link for routing
 // import "./DiseaseForm.css";

@@ -104,6 +104,7 @@ router.post("/login", async (req, res) => {
       role: existingUser.Role,
       userId: existingUser.User_Id,
       username: existingUser.Username,
+      email: existingUser.Email,
     });
 
   } catch (err) {

@@ -13,15 +13,37 @@ router.get('/users', async (req, res) => {
   }
 });
 
-// Fetch user profile including patient history
-router.post('/profile', async (req, res) => {
-  console.log("Profile route hit!"); // This should log every time
+
+// Temporary storage (This will reset on server restart. Consider Redis or session storage for persistence)
+let tempUserData = {};
+
+// Route 1: Store user data
+router.post('/store-user-data', (req, res) => {
+  console.log("Store User Data route hit!");
 
   const { role, username, userId, email } = req.body;
-  console.log("Received user data:", req.body); // Print entire request body
+  
+  // Check if any field is missing
+  if (!role || !username || !userId || !email || email === "undefined") {
+    console.error("Invalid user data received:", req.body);
+    return res.status(400).json({ error: "Missing or invalid user information." });
+  }
 
-  if (!role || !username || !userId || !email) {
-    return res.status(400).json({ error: "Missing user information." });
+  // Store user data temporarily
+  tempUserData = { role, username, userId, email };
+
+  console.log("User data stored temporarily:", tempUserData);
+  res.json({ message: "User data received and stored." });
+});
+
+// Route 2: Fetch patient history using stored userId
+router.get('/fetch-patient-history', async (req, res) => {
+  console.log("Fetch Patient History route hit!");
+
+  const { userId } = tempUserData;
+
+  if (!userId) {
+    return res.status(400).json({ error: "No user data stored. Please send data first." });
   }
 
   try {
@@ -41,7 +63,7 @@ router.post('/profile', async (req, res) => {
     }
 
     const userProfile = {
-      role, username, userId, email,
+      ...tempUserData, // Include stored user details
       Previous_Diseases: rows[0].Previous_Diseases,
       Previous_Symptoms: rows[0].Previous_Symptoms,
       Date_Of_Record: rows[0].Date_Of_Record,
@@ -56,6 +78,8 @@ router.post('/profile', async (req, res) => {
     res.status(500).json({ error: "Database query failed." });
   }
 });
+
+module.exports = router;
 
 // router.post('/profile', async (req, res) => {
 //   const { role, username, userId, email } = req.body;
