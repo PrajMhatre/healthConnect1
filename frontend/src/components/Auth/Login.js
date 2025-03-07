@@ -59,7 +59,7 @@ const Login = () => {
         if (role === "patient") {
           navigate("/");
         } else if (role === "doctor") {
-          navigate("/doctor-dashboard");
+          navigate("/");
         }
       } else {
         setError("Invalid credentials. Please try again.");

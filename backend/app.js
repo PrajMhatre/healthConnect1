@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes'); // Import the user routes
 const doctorRoutes = require('./routes/doctorRoutes'); // Import doctor routes
 const patientRoutes = require('./routes/patientRoutes');  // Import patient routes
 const authRoutes = require('./routes/authRoutes');  // Import patient routes
+const doctorProfileRoutes = require('./routes/doctorProfileRoutes');  // Import patient routes
 const pool = require('./utils/db'); // Import the database connection pool
 
 dotenv.config(); // Load environment variables from .env
@@ -46,6 +47,8 @@ app.use('/api', doctorRoutes);  //http://localhost:4000/api/doctors
 app.use('/api', patientRoutes);  // Use patient routes
 // Use the patient routes
 app.use('/api', authRoutes);  // Use patient routes
+// Use the patient routes
+app.use('/api', doctorProfileRoutes);  
 // Fallback for unmatched routes (404 error)
 app.use((req, res) => {
   res.status(404).send('Route not found');

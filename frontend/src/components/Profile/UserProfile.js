@@ -10,33 +10,36 @@ const UserProfile = () => {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        // Retrieve user details from localStorage
         const role = localStorage.getItem("role");
         const username = localStorage.getItem("username");
         const userId = localStorage.getItem("userId");
-        const email = localStorage.getItem("email");
-
+        const email = localStorage.getItem("email"); // Check if email is null or undefined
+    
         if (!role || !username || !userId || !email) {
+            console.error("User information missing:", { role, username, userId, email });
             setError("User information not found.");
             setLoading(false);
             return;
         }
-
-        // Prepare data to send to the backend
-        const requestData = { role, username, userId, email };
-
-        // Send request to backend
-        axios.post("http://localhost:4000/api/profile", requestData)
+    
+        // Step 1: Send user data first
+        axios.post("http://localhost:4000/api/store-user-data", { role, username, userId, email })
+            .then(() => {
+                // Step 2: Fetch patient history after storing user data
+                return axios.get("http://localhost:4000/api/fetch-patient-history");
+            })
             .then(response => {
                 setUserData(response.data);
                 setLoading(false);
             })
             .catch(error => {
+                console.error("Failed to fetch user data:", error);
                 setError("Failed to fetch user data.");
                 setLoading(false);
             });
     }, []);
-
+    
+    
     if (loading) return <p>Loading user data...</p>;
     if (error) return <p style={{ color: "red" }}>{error}</p>;
 

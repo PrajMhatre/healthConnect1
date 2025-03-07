@@ -13,6 +13,7 @@ import DoctorDetails from "./components/Auth/DoctorDetails";
 import UserPreferences from "./components/DoctorRecommendation/UserPreferences";
 import AuthCheck from "./AuthCheck";
 import UserProfile from './components/Profile/UserProfile';
+import DoctorProfile from './components/Profile/UserProfile';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/doctor-details" element={<DoctorDetails />} />
                 <Route path="/userPreferences" element={<UserPreferences />} />
                 <Route path="/user-profile" element={<UserProfile />} />
+                <Route path="/doctor-profile" element={<DoctorProfile />} />
             </Routes>
         </Router>
     );
